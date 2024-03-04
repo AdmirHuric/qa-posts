@@ -1,7 +1,10 @@
+import { Link } from 'react-router-dom';
+import { TGeneratedPost } from '../config/types';
 import { usePosts } from '../context/PostsContext';
 import styles from '../assets/styles/Posts.module.css';
 import useOnMountUnsafe from '../hooks/onMountUnsafe';
 import Loader from '../components/Loader';
+import Post from '../components/PostCard';
 
 function Posts() {
   const { getPosts, posts, loading } = usePosts();
@@ -9,7 +12,7 @@ function Posts() {
   useOnMountUnsafe(() => {
     getPosts();
   });
-  console.log(posts);
+
   return (
     <div className={styles['posts-container']}>
       <div className={styles.title}>
@@ -20,12 +23,11 @@ function Posts() {
         <Loader />
       ) : (
         <div className={styles.posts}>
-          {posts.map((item) => {
+          {posts.map((item: TGeneratedPost) => {
             return (
-              <div className={styles.post} key={`post-${item.id}`}>
-                <span>{item.title}</span>
-                <p>{item.body}</p>
-              </div>
+              <Link key={item.id} to={`/posts/${item.id}`}>
+                <Post post={item} />
+              </Link>
             );
           })}
         </div>

@@ -1,4 +1,4 @@
-import { TPost } from './types';
+import { TPost } from '../../config/types';
 import config from '../../config/config';
 
 const { API_URL } = config;

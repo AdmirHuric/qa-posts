@@ -1,5 +1,4 @@
 import {
-  ReactNode,
   createContext,
   useContext,
   useState,
@@ -8,25 +7,12 @@ import {
 } from 'react';
 import apiGetPosts from '../api/actions/posts';
 import apiGetComments from '../api/actions/comments';
-import { TComments } from '../api/actions/types';
-
-type TPostsProviderProps = {
-  children: ReactNode;
-};
-
-type TGeneratedPost = {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
-  comments: TComments[] | [];
-};
-
-type TPostsContext = {
-  posts: TGeneratedPost[];
-  getPosts: () => void;
-  loading: boolean;
-};
+import apiGetUsers from '../api/actions/users';
+import {
+  TPostsContext,
+  TPostsProviderProps,
+  TGeneratedPost,
+} from '../config/types';
 
 const PostsContext = createContext({} as TPostsContext);
 const usePosts = () => {
@@ -40,14 +26,16 @@ function PostsProvider({ children }: TPostsProviderProps) {
   const getPosts = useCallback(async () => {
     setLoading(true);
 
-    const [postsData, commentsData] = await Promise.all([
+    const [postsData, commentsData, usersData] = await Promise.all([
       apiGetPosts(),
       apiGetComments(),
+      apiGetUsers(),
     ]);
 
     const newPosts = postsData.map((post) => {
       return {
         comments: commentsData.filter((comment) => comment.postId === post.id),
+        user: usersData.find((user) => user.id === post.userId),
         ...post,
       };
     });
