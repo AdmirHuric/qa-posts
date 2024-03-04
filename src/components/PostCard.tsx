@@ -1,5 +1,5 @@
 import { TGeneratedPost } from '../config/types';
-import styles from '../assets/styles/Post.module.css';
+import styles from '../assets/styles/PostCard.module.css';
 import PostCardContent from './PostCardContent';
 
 interface PostCardProps {

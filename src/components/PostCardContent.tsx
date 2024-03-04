@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import styles from '../assets/styles/Post.module.css';
+import styles from '../assets/styles/PostCard.module.css';
 
 interface PostCardContentProps {
   children?: ReactNode;

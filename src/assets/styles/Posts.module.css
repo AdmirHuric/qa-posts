@@ -16,6 +16,17 @@
     border-bottom: 1px solid darkblue;
 }
 
+.no-post {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 a {
     text-decoration: none !important;
+}
+
+.no-post a {
+    text-decoration: underline !important;
+    color: blue;
 }
