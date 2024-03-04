@@ -1,0 +1,25 @@
+header,
+footer {
+    display: flex;
+    align-items: center;
+    flex-basis: 50px;
+    box-shadow: 0 0 1px 0 darkblue;
+    padding: 10px;
+    background-color: #f8fafd;
+}
+
+main {
+    display: flex;
+    flex: 1;
+    overflow-y: auto;
+    margin: 20px;
+}
+
+header {
+    justify-content: center;
+    font-size: 24px;
+}
+
+footer {
+    justify-content: flex-end;
+}

@@ -1,0 +1,39 @@
+html {
+    font-family: "Roboto", sans-serif;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#root {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+}
+
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: lightblue #f8fafd;
+    
+  }
+  
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 12px;
+    
+  }
+  
+  *::-webkit-scrollbar-track {
+    background: #f8fafd;
+    
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    background-color: lightblue;
+    border-radius: 20px;
+    border: 3px solid #f8fafd;
+  }
