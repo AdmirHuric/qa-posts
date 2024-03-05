@@ -36,7 +36,7 @@ function Post({ propsMessage }: PostProps) {
         <h1>Post by {post?.user?.username || '...'}</h1>
       </div>
       {loading ? (
-        <Loader />
+        <Loader propsMessage={propsMessage} />
       ) : (
         <div className={styles.posts}>
           {post ? (
