@@ -1,10 +1,14 @@
 import { Link, useParams } from 'react-router-dom';
 import { usePosts } from '../context/PostsContext';
 import PostCard from '../components/PostCard';
-import styles from '../assets/styles/Posts.module.css';
 import useOnMountUnsafe from '../hooks/onMountUnsafe';
 import Loader from '../components/Loader';
 import { TGeneratedPost } from '../config/types';
+import styles from '../assets/styles/Posts.module.css';
+
+interface PostProps {
+  propsMessage: string;
+}
 
 const findPost = (
   posts: TGeneratedPost[],
@@ -13,15 +17,19 @@ const findPost = (
   return posts.find((item) => item.id.toString() === id);
 };
 
-function Post() {
+function Post({ propsMessage }: PostProps) {
+  console.log(`${propsMessage} Post`);
+
   const { id } = useParams();
   const { posts, getPosts, loading } = usePosts();
   const post = findPost(posts, id);
+
   useOnMountUnsafe(() => {
     if (!findPost(posts, id)) {
       getPosts();
     }
   });
+
   return (
     <div className={styles['posts-container']}>
       <div className={styles.title}>
@@ -32,7 +40,7 @@ function Post() {
       ) : (
         <div className={styles.posts}>
           {post ? (
-            <PostCard post={post} />
+            <PostCard propsMessage={propsMessage} post={post} />
           ) : (
             <div className={styles['no-post']}>
               <div>{`No post with id: ${id}`}</div>

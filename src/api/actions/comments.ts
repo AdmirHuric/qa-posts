@@ -11,6 +11,7 @@ const apiGetComments = async (): Promise<TComment[] | []> => {
     comments = data as TComment[];
     return comments;
   } catch (error) {
+    console.log(error);
     return comments;
   }
 };

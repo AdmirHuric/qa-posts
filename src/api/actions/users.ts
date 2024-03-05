@@ -18,6 +18,7 @@ const apiGetUsers = async (): Promise<TUser[] | []> => {
     });
     return users;
   } catch (error) {
+    console.log(error);
     return users;
   }
 };

@@ -25,10 +25,6 @@
     border-right: 1px solid black;
 }
 
-.title {
-    color: darkcyan;
-}
-
 .body {
     display: flex;
     align-items: center;
@@ -53,11 +49,11 @@
     width: calc(100% - 20px);
 }
 
-.comment span {
-    color: darkcyan;
-}
-
 .comment .body {
     font-size: 1em;
     width: 100%;
+}
+
+.title, .comment span {
+    color: darkcyan;
 }

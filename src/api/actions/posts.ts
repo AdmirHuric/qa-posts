@@ -11,6 +11,7 @@ const apiGetPosts = async (): Promise<TPost[] | []> => {
     posts = data as TPost[];
     return posts;
   } catch (error) {
+    console.log(error);
     return posts;
   }
 };

@@ -8,6 +8,7 @@
 
 .posts {
     display: flex;
+    width: calc(100% - 35px);
     flex-direction: column;
     flex: 1;
     overflow-y: auto;
@@ -16,10 +17,34 @@
     border-bottom: 1px solid darkblue;
 }
 
+.filter-by-form {
+    margin: 20px 20px 40px 20px;
+    width: 100%;
+}
+
+.filter-by-form input {
+    border-radius: 20px;
+    border: 1px solid darkblue;
+    width: calc(100% - 25px);
+    padding: 10px;
+    color: darkblue;
+}
+
 .no-post {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.no-post button {
+    background: red;
+    color: white;
+    height: 50px;
+    border: none;
+    margin: 10px;
+    border-radius: 10px;
+    padding: 10px;
+    cursor:pointer;
 }
 
 a {

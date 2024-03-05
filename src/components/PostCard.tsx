@@ -4,17 +4,25 @@ import PostCardContent from './PostCardContent';
 
 interface PostCardProps {
   post: TGeneratedPost;
+  propsMessage: string;
 }
 
-function PostCard({ post }: PostCardProps) {
-  const { title, body, comments } = post;
+function PostCard({ post, propsMessage }: PostCardProps) {
+  console.log(`${propsMessage} PostCard`);
+
+  const { title, body, comments, user } = post;
   return (
     <div className={styles['post-card-container']}>
       <div className={styles.post}>
         <div className={styles.badge}>
           <h2>POST</h2>
         </div>
-        <PostCardContent title={title} body={body} />
+        <PostCardContent
+          propsMessage={propsMessage}
+          username={user?.username || user?.name || 'Unknown'}
+          title={title}
+          body={body}
+        />
       </div>
       <div className={styles.comments}>
         <div className={styles.badge}>
@@ -24,9 +32,12 @@ function PostCard({ post }: PostCardProps) {
           const { id, name, email } = comment;
           return (
             <div className={styles.comment} key={id}>
-              <PostCardContent title={name} body={comment.body}>
-                <span>by {email}</span>
-              </PostCardContent>
+              <PostCardContent
+                propsMessage={propsMessage}
+                username={email}
+                title={name}
+                body={comment.body}
+              />
             </div>
           );
         })}

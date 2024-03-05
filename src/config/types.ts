@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { Dispatch, ReactNode, SetStateAction } from 'react';
 
 export type TPost = {
   userId: number;
@@ -37,5 +37,8 @@ export type TGeneratedPost = {
 export type TPostsContext = {
   posts: TGeneratedPost[];
   getPosts: () => void;
+  filteredPosts: TGeneratedPost[];
+  filterByUsername: string;
+  setFilterByUsername: Dispatch<SetStateAction<string>>;
   loading: boolean;
 };

@@ -1,19 +1,26 @@
-import { ReactNode } from 'react';
 import styles from '../assets/styles/PostCard.module.css';
 
 interface PostCardContentProps {
-  children?: ReactNode;
+  propsMessage: string;
+  username: string;
   title: string;
   body: string;
 }
 
-function PostCardContent({ children, title, body }: PostCardContentProps) {
+function PostCardContent({
+  propsMessage,
+  username,
+  title,
+  body,
+}: PostCardContentProps) {
+  console.log(`${propsMessage} PostCardContent`);
+
   return (
     <>
       <div className={styles.title}>
         <h3>{title}</h3>
       </div>
-      {children}
+      <span>by {username}</span>
       <div className={styles.body}>
         <p>
           <q>{body}</q>
@@ -22,9 +29,5 @@ function PostCardContent({ children, title, body }: PostCardContentProps) {
     </>
   );
 }
-
-PostCardContent.defaultProps = {
-  children: null,
-};
 
 export default PostCardContent;
